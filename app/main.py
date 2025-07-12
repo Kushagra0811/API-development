@@ -10,8 +10,17 @@ from pydantic_settings import BaseSettings
 from .config import settings
 
 # models.Base.metadata.create_all(bind=engine)
+import os
+from alembic.config import Config
+from alembic import command
 
+def run_migrations():
+    alembic_cfg = Config(os.path.join(os.path.dirname(__file__), '..', 'alembic.ini'))
+    command.upgrade(alembic_cfg, 'head')
+
+# Place this right after your app is created
 app = FastAPI()    
+run_migrations()
 
 
 options = ["*"]
