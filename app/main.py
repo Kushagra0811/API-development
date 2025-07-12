@@ -11,11 +11,7 @@ from .config import settings
 
 # models.Base.metadata.create_all(bind=engine)
 
-
-# Place this right after your app is created
 app = FastAPI()    
-
-
 
 options = ["*"]
 app.add_middleware(
@@ -34,7 +30,7 @@ app.include_router(vote.router)
 
 @app.get("/")
 def root():
-    return {"message": "Welcome to my API!!!!!"}
+    return {"message": "Welcome to my API"}
 
 
 
