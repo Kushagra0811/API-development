@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Fetch from FastAPI</h2>
+    <button onclick="makeRequest()">Send Request</button>
+
+    <script>
+      function makeRequest() {
+        fetch('http://localhost:8000/', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => response.json())
+        .then(data => console.log('Response:', data))
+        .catch(error => console.error('Error:', error));
+      }
+    </script>
+  </body>
+</html>
